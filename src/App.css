@@ -1,28 +1,57 @@
-.App {
+.search_container {
+  height: 350px;
+  font-size: 3em;
   text-align: center;
+  background-color: #113E58;
+  color: #fff;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.search_form {
+  padding-top: 100px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+input[type="text"] {
+  height: 35px;
+  width: 300px;
+  padding: 0 10px;
+  font-size: 0.4em;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  margin-left: 1em;
+  font-size: 0.4em;
+  border: none;
+  border-radius: 10px;
+  background-color: #8a8989;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.book_container {
+  text-align: center;
 }
 
-.App-intro {
-  font-size: large;
+.book {
+  float: left;
+  width: 200px;
+  height: 250px;
+  margin: 2em 1em;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.image_container {
+  min-height: 190px;
+  max-height: 190px;
+}
+
+img {
+  max-height: 190px;
+}
+
+a {
+  color: #113E58;
+}
+
+.publisher {
+  font-style: italic;
 }

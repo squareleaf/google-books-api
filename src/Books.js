@@ -39,34 +39,27 @@ class Books extends Component {
     const { books } = this.state;
 
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+      <div>
+        <div className="search_container">
+          <form onSubmit={this.handleSubmit} className="search_form">
+            <label>
+              Search Title or Author<br />
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
 
-        <table>
-        <tbody>
-          <tr>
-            <th>Title</th>
-            <th>Authors</th>
-            <th>Publisher</th>
-          </tr>
+        <div className="book_container">
           {books.map(book =>
-            <tr>
-              <td><a href={book.volumeInfo.infoLink}>{book.volumeInfo.title}</a></td>
-              <td>{book.volumeInfo.authors}</td>
-              <td>{book.volumeInfo.publisher}</td>
-              <td>
-                <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ''} alt={book.volumeInfo.title} />
-              </td>
-            </tr>
+            <div className="book">
+              <div className="image_container"><img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ''} alt={book.volumeInfo.title} /></div>
+              <div><a href={book.volumeInfo.infoLink}>{book.volumeInfo.title}</a></div>
+              <div>{book.volumeInfo.authors[0]}</div>
+              <div className="publisher">{book.volumeInfo.publisher}</div>
+            </div>
           )}
-        </tbody>
-        </table>
+        </div>
       </div>
     );
   }
