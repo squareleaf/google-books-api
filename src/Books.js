@@ -57,7 +57,7 @@ class Books extends Component {
           </tr>
           {books.map(book =>
             <tr>
-              <td>{book.volumeInfo.title}</td>
+              <td><a href={book.volumeInfo.infoLink}>{book.volumeInfo.title}</a></td>
               <td>{book.volumeInfo.authors}</td>
               <td>{book.volumeInfo.publisher}</td>
               <td>
