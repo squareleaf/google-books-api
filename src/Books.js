@@ -60,6 +60,9 @@ class Books extends Component {
               <td>{book.volumeInfo.title}</td>
               <td>{book.volumeInfo.authors}</td>
               <td>{book.volumeInfo.publisher}</td>
+              <td>
+                <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ''} alt={book.volumeInfo.title} />
+              </td>
             </tr>
           )}
         </tbody>
