@@ -33,7 +33,10 @@ class Books extends Component {
 
     fetch(API + searchValue)
       .then(response => response.json())
-      .then(data => this.setState({ books: data.items }));
+      .then(data => this.setState({ books: data.items })
+      ).catch(function(error) {
+        this.setState({error})
+      });
 
     this.setState({value: searchValue});
   }
