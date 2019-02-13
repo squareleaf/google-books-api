@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-const API = 'https://www.googleapis.com/books/v1/volumes?q=';
-const DEFAULT_QUERY = 'stephen+king';
+const API = 'https://www.googleapis.com/books/v1/volumes?maxResults=40&q=';
+const DEFAULT_QUERY = 'classics';
 var searchValue = '';
 
 class Books extends Component {
@@ -9,7 +9,7 @@ class Books extends Component {
     super(props);
     this.state = {
       books: [],
-      value: ''
+      value: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,6 +33,8 @@ class Books extends Component {
     fetch(API + searchValue)
       .then(response => response.json())
       .then(data => this.setState({ books: data.items }));
+
+    this.setState({value: searchValue});
   }
 
   render() {
@@ -44,19 +46,19 @@ class Books extends Component {
           <form onSubmit={this.handleSubmit} className="search_form">
             <label>
               Search Title or Author<br />
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              <input name="value" type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
             </label>
             <input type="submit" value="Submit" />
           </form>
         </div>
 
         <div className="book_container">
-          {books.map(book =>
-            <div className="book">
+          {books.map((book, id) =>
+            <div key={id} className="book">
               <div className="image_container"><img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ''} alt={book.volumeInfo.title} /></div>
               <div><a href={book.volumeInfo.infoLink}>{book.volumeInfo.title}</a></div>
-              {book.volumeInfo.authors.map(author =>
-                <div>{author}</div>
+              {book.volumeInfo.authors.map((author, id) =>
+                <div key={id}>{author}</div>
               )}
               <div className="publisher">{book.volumeInfo.publisher}</div>
             </div>
