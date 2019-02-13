@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import no_cover from './no_cover.png';
 
 const API = 'https://www.googleapis.com/books/v1/volumes?maxResults=40&q=';
 const DEFAULT_QUERY = 'classics';
@@ -55,7 +56,7 @@ class Books extends Component {
         <div className="book_container">
           {books.map((book, id) =>
             <div key={id} className="book">
-              <div className="image_container"><img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ''} alt={book.volumeInfo.title} /></div>
+              <div className="image_container"><img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : no_cover} alt={book.volumeInfo.title} /></div>
               <div><a href={book.volumeInfo.infoLink}>{book.volumeInfo.title}</a></div>
               {book.volumeInfo.authors.map((author, id) =>
                 <div key={id}>{author}</div>
